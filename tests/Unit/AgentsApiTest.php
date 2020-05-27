@@ -40,9 +40,24 @@ class AgentsApiTest extends TestCase
     /** @test */
     public function testWebsiteIsRequiredWhenFindingAgentById()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectErrorMessage('Website is required');
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(InvalidArgumentException::class);
+            $this->expectErrorMessage('Website is required');
 
+            $this->websiteIsRequiredWhenFindingAgentById();
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $this->websiteIsRequiredWhenFindingAgentById();
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(InvalidArgumentException::class, $exception);
+                $this->assertEquals('Website is required', $exception->getMessage());
+            }
+        }
+    }
+
+    private function websiteIsRequiredWhenFindingAgentById()
+    {
         $response = (new AgentApi($this->client))
             // No website set
             ->token('TEST-1234')
@@ -52,9 +67,24 @@ class AgentsApiTest extends TestCase
     /** @test */
     public function testTokenIsRequiresWhenFindingAgentById()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectErrorMessage('Token is required');
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(InvalidArgumentException::class);
+            $this->expectErrorMessage('Token is required');
 
+            $this->tokenIsRequiresWhenFindingAgentById();
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $this->tokenIsRequiresWhenFindingAgentById();
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(InvalidArgumentException::class, $exception);
+                $this->assertEquals('Token is required', $exception->getMessage());
+            }
+        }
+    }
+
+    private function tokenIsRequiresWhenFindingAgentById()
+    {
         $response = (new AgentApi($this->client))
             ->website('example.com')
             // No token set
@@ -85,9 +115,24 @@ class AgentsApiTest extends TestCase
     /** @test */
     public function testWebsiteIsRequiredWhenLookingByAgentNumber()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectErrorMessage('Website is required');
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(InvalidArgumentException::class);
+            $this->expectErrorMessage('Website is required');
 
+            $this->websiteIsRequiredWhenLookingByAgentNumber();
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $this->websiteIsRequiredWhenLookingByAgentNumber();
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(InvalidArgumentException::class, $exception);
+                $this->assertEquals('Website is required', $exception->getMessage());
+            }
+        }
+    }
+
+    private function websiteIsRequiredWhenLookingByAgentNumber()
+    {
         (new AgentApi($this->client))
             // No website
             ->token('TEST-1234')
@@ -98,9 +143,24 @@ class AgentsApiTest extends TestCase
     /** @test */
     public function testTokenIsRequiredWhenLookingByAgentNumber()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectErrorMessage('Token is required');
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(InvalidArgumentException::class);
+            $this->expectErrorMessage('Token is required');
 
+            $this->tokenIsRequiredWhenLookingByAgentNumber();
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $this->tokenIsRequiredWhenLookingByAgentNumber();
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(InvalidArgumentException::class, $exception);
+                $this->assertEquals('Token is required', $exception->getMessage());
+            }
+        }
+    }
+
+    private function tokenIsRequiredWhenLookingByAgentNumber()
+    {
         (new AgentApi($this->client))
             ->website('example.com')
             // No token
@@ -111,9 +171,24 @@ class AgentsApiTest extends TestCase
     /** @test */
     public function testCarrierIsRequiredWhenLookingByAgentNumber()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectErrorMessage('Carrier is required');
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(InvalidArgumentException::class);
+            $this->expectErrorMessage('Carrier is required');
 
+            $this->carrierIsRequiredWhenLookingByAgentNumber();
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $this->carrierIsRequiredWhenLookingByAgentNumber();
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(InvalidArgumentException::class, $exception);
+                $this->assertEquals('Carrier is required', $exception->getMessage());
+            }
+        }
+    }
+
+    private function carrierIsRequiredWhenLookingByAgentNumber()
+    {
         (new AgentApi($this->client))
             ->website('example.com')
             ->token('TEST-1234')
@@ -124,9 +199,24 @@ class AgentsApiTest extends TestCase
     /** @test */
     public function testCountryIsRequiredWhenLookingByAgentNumber()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectErrorMessage('Country is required');
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(InvalidArgumentException::class);
+            $this->expectErrorMessage('Country is required');
 
+            $this->countryIsRequiredWhenLookingByAgentNumber();
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $this->countryIsRequiredWhenLookingByAgentNumber();
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(InvalidArgumentException::class, $exception);
+                $this->assertEquals('Country is required', $exception->getMessage());
+            }
+        }
+    }
+
+    private function countryIsRequiredWhenLookingByAgentNumber()
+    {
         (new AgentApi($this->client))
             ->website('example.com')
             ->token('TEST-1234')
@@ -141,9 +231,24 @@ class AgentsApiTest extends TestCase
     /** @test */
     public function testWebsteIsRequiredWhenListingAgents()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectErrorMessage('Website is required');
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(InvalidArgumentException::class);
+            $this->expectErrorMessage('Website is required');
 
+            $this->websteIsRequiredWhenListingAgents();
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $this->websteIsRequiredWhenListingAgents();
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(InvalidArgumentException::class, $exception);
+                $this->assertEquals('Website is required', $exception->getMessage());
+            }
+        }
+    }
+
+    private function websteIsRequiredWhenListingAgents()
+    {
         (new AgentApi($this->client))
             // No website
             ->token('TEST-1234')
@@ -154,9 +259,24 @@ class AgentsApiTest extends TestCase
     /** @test */
     public function testTokenIsRequiredWhenListingAgents()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectErrorMessage('Token is required');
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(InvalidArgumentException::class);
+            $this->expectErrorMessage('Token is required');
 
+            $this->tokenIsRequiredWhenListingAgents();
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $this->tokenIsRequiredWhenListingAgents();
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(InvalidArgumentException::class, $exception);
+                $this->assertEquals('Token is required', $exception->getMessage());
+            }
+        }
+    }
+
+    private function tokenIsRequiredWhenListingAgents()
+    {
         (new AgentApi($this->client))
             ->website('example.com')
             // No token
@@ -167,9 +287,24 @@ class AgentsApiTest extends TestCase
     /** @test */
     public function testCarrierIsRequiredWhenListingAgents()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectErrorMessage('Carrier is required');
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(InvalidArgumentException::class);
+            $this->expectErrorMessage('Carrier is required');
 
+            $this->carrierIsRequiredWhenListingAgents();
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $this->carrierIsRequiredWhenListingAgents();
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(InvalidArgumentException::class, $exception);
+                $this->assertEquals('Carrier is required', $exception->getMessage());
+            }
+        }
+    }
+
+    private function carrierIsRequiredWhenListingAgents()
+    {
         (new AgentApi($this->client))
             ->website('example.com')
             ->token('TEST-1234')
@@ -180,9 +315,24 @@ class AgentsApiTest extends TestCase
     /** @test */
     public function testCountryIsRequiredWhenListingAgents()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectErrorMessage('Country is required');
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(InvalidArgumentException::class);
+            $this->expectErrorMessage('Country is required');
 
+            $this->countryIsRequiredWhenListingAgents();
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $this->countryIsRequiredWhenListingAgents();
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(InvalidArgumentException::class, $exception);
+                $this->assertEquals('Country is required', $exception->getMessage());
+            }
+        }
+    }
+
+    private function countryIsRequiredWhenListingAgents()
+    {
         (new AgentApi($this->client))
             ->website('example.com')
             ->token('TEST-1234')
@@ -251,9 +401,24 @@ class AgentsApiTest extends TestCase
     /** @test */
     public function testWebsiteIsRequiredWhenSearchingForClosestAgents()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectErrorMessage('Website is required');
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(InvalidArgumentException::class);
+            $this->expectErrorMessage('Website is required');
 
+            $this->websiteIsRequiredWhenSearchingForClosestAgents();
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $this->websiteIsRequiredWhenSearchingForClosestAgents();
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(InvalidArgumentException::class, $exception);
+                $this->assertEquals('Website is required', $exception->getMessage());
+            }
+        }
+    }
+
+    private function websiteIsRequiredWhenSearchingForClosestAgents()
+    {
         (new AgentApi($this->client))
             // No website
             ->token('TEST-1234')
@@ -264,9 +429,24 @@ class AgentsApiTest extends TestCase
     /** @test */
     public function testTokenIsRequiredWhenSearchingForClosestAgents()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectErrorMessage('Token is required');
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(InvalidArgumentException::class);
+            $this->expectErrorMessage('Token is required');
 
+            $this->tokenIsRequiredWhenSearchingForClosestAgents();
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $this->tokenIsRequiredWhenSearchingForClosestAgents();
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(InvalidArgumentException::class, $exception);
+                $this->assertEquals('Token is required', $exception->getMessage());
+            }
+        }
+    }
+
+    private function tokenIsRequiredWhenSearchingForClosestAgents()
+    {
         (new AgentApi($this->client))
             ->website('example.com')
             // No token
@@ -277,9 +457,24 @@ class AgentsApiTest extends TestCase
     /** @test */
     public function testCarrierIsRequiredWhenSearchingForClosestAgents()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectErrorMessage('Carrier is required');
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(InvalidArgumentException::class);
+            $this->expectErrorMessage('Carrier is required');
 
+            $this->carrierIsRequiredWhenSearchingForClosestAgents();
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $this->carrierIsRequiredWhenSearchingForClosestAgents();
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(InvalidArgumentException::class, $exception);
+                $this->assertEquals('Carrier is required', $exception->getMessage());
+            }
+        }
+    }
+
+    private function carrierIsRequiredWhenSearchingForClosestAgents()
+    {
         (new AgentApi($this->client))
             ->website('example.com')
             ->token('TEST-1234')
@@ -290,9 +485,24 @@ class AgentsApiTest extends TestCase
     /** @test */
     public function testCountryIsRequiredWhenSearchingForClosestAgents()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectErrorMessage('Country is required');
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(InvalidArgumentException::class);
+            $this->expectErrorMessage('Country is required');
 
+            $this->countryIsRequiredWhenSearchingForClosestAgents();
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $this->countryIsRequiredWhenSearchingForClosestAgents();
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(InvalidArgumentException::class, $exception);
+                $this->assertEquals('Country is required', $exception->getMessage());
+            }
+        }
+    }
+
+    private function countryIsRequiredWhenSearchingForClosestAgents()
+    {
         (new AgentApi($this->client))
             ->website('example.com')
             ->token('TEST-1234')

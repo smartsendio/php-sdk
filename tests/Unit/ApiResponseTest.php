@@ -95,8 +95,18 @@ class ApiResponseTest extends TestCase
         $psrResponse = new Response(200, [], json_encode(['not-data-field' => 'value']));
         $response = new ApiResponse($psrResponse);
 
-        $this->expectException(\RuntimeException::class);
-        $response->getData(); // This should throw an exception
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(\RuntimeException::class);
+
+            $response->getData(); // This should throw an exception
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $response->getData(); // This should throw an exception
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(\RuntimeException::class, $exception);
+            }
+        }
     }
 
     /** @test */
@@ -113,16 +123,6 @@ class ApiResponseTest extends TestCase
     //======================================================================
     // Errors
     //======================================================================
-
-    /** @test */
-    public function getThrowsExceptionForMissingErrors(): void
-    {
-        $psrResponse = new Response(200, [], json_encode(['not-data-field' => 'value']));
-        $response = new ApiResponse($psrResponse);
-
-        $this->expectException(\RuntimeException::class);
-        $response->getData(); // This should throw an exception
-    }
 
     /** @test */
     public function testReturnsErrorFromResponse(): void
