@@ -14,7 +14,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        php: [7.0 7.1 7.2, 7.3, 7.4]
+        php: [5.5, 5.6, 7.0, 7.1, 7.2, 7.3, 7.4]
         dependency-version: [prefer-lowest, prefer-stable]
         os: [ubuntu-latest]
 
