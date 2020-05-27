@@ -4,7 +4,7 @@ namespace SmartSendIo\Api\Contracts;
 
 interface ApiAuthenticationInterface
 {
-    public function token(string $token): self;
+    public function token(string $token): ApiAuthenticationInterface;
 
-    public function website(string $website): self;
+    public function website(string $website): ApiAuthenticationInterface;
 }
