@@ -80,7 +80,7 @@ class AgentApi extends AbstractApi implements AgentApiInterface
             $this->getBaseUri($this->api_endpoint_base).$this->getPathString($pathParameters),
             [
                 'api_token' => $this->token,
-            ],
+            ]
         );
     }
 

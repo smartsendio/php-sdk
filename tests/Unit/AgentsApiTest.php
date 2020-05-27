@@ -29,8 +29,8 @@ class AgentsApiTest extends TestCase
             ->with('https://app.smartsend.io/api/v1/website/example.com/agents/123/', ['api_token' => 'TEST-1234'])
             ->andReturn(\Mockery::mock(ApiResponseInterface::class));
 
-        $api = new AgentApi($this->client);
-        $response = $api->website('example.com')
+        $response = (new AgentApi($this->client))
+            ->website('example.com')
             ->token('TEST-1234')
             ->find('123');
 
@@ -43,9 +43,9 @@ class AgentsApiTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectErrorMessage('Website is required');
 
-        $api = new AgentApi($this->client);
+        $response = (new AgentApi($this->client))
             // No website set
-        $response = $api->token('TEST-1234')
+            ->token('TEST-1234')
             ->find('123');
     }
 
@@ -55,8 +55,8 @@ class AgentsApiTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectErrorMessage('Token is required');
 
-        $api = new AgentApi($this->client);
-        $response = $api->website('example.com')
+        $response = (new AgentApi($this->client))
+            ->website('example.com')
             // No token set
             ->find('123');
     }
@@ -72,8 +72,8 @@ class AgentsApiTest extends TestCase
             ->with('https://app.smartsend.io/api/v1/website/example.com/agents/carrier/TESTDK/country/DK/agentno/123/', ['api_token' => 'TEST-1234'])
             ->andReturn(\Mockery::mock(ApiResponseInterface::class));
 
-        $api = new AgentApi($this->client);
-        $response = $api->website('example.com')
+        $response = (new AgentApi($this->client))
+            ->website('example.com')
             ->token('TEST-1234')
             ->carrier('TESTDK')
             ->country('DK')
@@ -88,9 +88,9 @@ class AgentsApiTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectErrorMessage('Website is required');
 
-        $api = new AgentApi($this->client);
+        (new AgentApi($this->client))
             // No website
-        $response = $api->token('TEST-1234')
+            ->token('TEST-1234')
             ->country('DK')
             ->lookup('123');
     }
@@ -101,8 +101,8 @@ class AgentsApiTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectErrorMessage('Token is required');
 
-        $api = new AgentApi($this->client);
-        $response = $api->website('example.com')
+        (new AgentApi($this->client))
+            ->website('example.com')
             // No token
             ->country('DK')
             ->lookup('123');
@@ -114,8 +114,8 @@ class AgentsApiTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectErrorMessage('Carrier is required');
 
-        $api = new AgentApi($this->client);
-        $response = $api->website('example.com')
+        (new AgentApi($this->client))
+            ->website('example.com')
             ->token('TEST-1234')
             ->country('DK')
             ->lookup('123');
@@ -127,8 +127,8 @@ class AgentsApiTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectErrorMessage('Country is required');
 
-        $api = new AgentApi($this->client);
-        $response = $api->website('example.com')
+        (new AgentApi($this->client))
+            ->website('example.com')
             ->token('TEST-1234')
             ->carrier('TESTDK')
             ->lookup('123');
@@ -144,9 +144,9 @@ class AgentsApiTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectErrorMessage('Website is required');
 
-        $api = new AgentApi($this->client);
+        (new AgentApi($this->client))
             // No website
-        $response = $api->token('TEST-1234')
+            ->token('TEST-1234')
             ->country('DK')
             ->get();
     }
@@ -157,8 +157,8 @@ class AgentsApiTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectErrorMessage('Token is required');
 
-        $api = new AgentApi($this->client);
-        $response = $api->website('example.com')
+        (new AgentApi($this->client))
+            ->website('example.com')
             // No token
             ->country('DK')
             ->get();
@@ -170,8 +170,8 @@ class AgentsApiTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectErrorMessage('Carrier is required');
 
-        $api = new AgentApi($this->client);
-        $response = $api->website('example.com')
+        (new AgentApi($this->client))
+            ->website('example.com')
             ->token('TEST-1234')
             ->country('DK')
             ->get();
@@ -183,8 +183,8 @@ class AgentsApiTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectErrorMessage('Country is required');
 
-        $api = new AgentApi($this->client);
-        $response = $api->website('example.com')
+        (new AgentApi($this->client))
+            ->website('example.com')
             ->token('TEST-1234')
             ->carrier('TESTDK')
             ->get();
@@ -197,8 +197,8 @@ class AgentsApiTest extends TestCase
             ->with('https://app.smartsend.io/api/v1/website/example.com/agents/carrier/TESTDK/country/DK/', ['api_token' => 'TEST-1234'])
             ->andReturn(\Mockery::mock(ApiResponseInterface::class));
 
-        $api = new AgentApi($this->client);
-        $response = $api->website('example.com')
+        $response = (new AgentApi($this->client))
+            ->website('example.com')
             ->token('TEST-1234')
             ->carrier('TESTDK')
             ->country('DK')
@@ -214,8 +214,8 @@ class AgentsApiTest extends TestCase
             ->with('https://app.smartsend.io/api/v1/website/example.com/agents/carrier/TESTDK/country/DK/postalcode/2100/', ['api_token' => 'TEST-1234'])
             ->andReturn(\Mockery::mock(ApiResponseInterface::class));
 
-        $api = new AgentApi($this->client);
-        $response = $api->website('example.com')
+        $response = (new AgentApi($this->client))
+            ->website('example.com')
             ->token('TEST-1234')
             ->carrier('TESTDK')
             ->country('DK')
@@ -232,8 +232,8 @@ class AgentsApiTest extends TestCase
             ->with('https://app.smartsend.io/api/v1/website/example.com/agents/carrier/TESTDK/country/DK/postalcode/2100/street/some street/', ['api_token' => 'TEST-1234'])
             ->andReturn(\Mockery::mock(ApiResponseInterface::class));
 
-        $api = new AgentApi($this->client);
-        $response = $api->website('example.com')
+        $response = (new AgentApi($this->client))
+            ->website('example.com')
             ->token('TEST-1234')
             ->carrier('TESTDK')
             ->country('DK')
@@ -254,9 +254,9 @@ class AgentsApiTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectErrorMessage('Website is required');
 
-        $api = new AgentApi($this->client);
+        (new AgentApi($this->client))
             // No website
-        $response = $api->token('TEST-1234')
+            ->token('TEST-1234')
             ->country('DK')
             ->closest();
     }
@@ -267,8 +267,8 @@ class AgentsApiTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectErrorMessage('Token is required');
 
-        $api = new AgentApi($this->client);
-        $response = $api->website('example.com')
+        (new AgentApi($this->client))
+            ->website('example.com')
             // No token
             ->country('DK')
             ->closest();
@@ -280,8 +280,8 @@ class AgentsApiTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectErrorMessage('Carrier is required');
 
-        $api = new AgentApi($this->client);
-        $response = $api->website('example.com')
+        (new AgentApi($this->client))
+            ->website('example.com')
             ->token('TEST-1234')
             ->country('DK')
             ->closest();
@@ -293,8 +293,8 @@ class AgentsApiTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectErrorMessage('Country is required');
 
-        $api = new AgentApi($this->client);
-        $response = $api->website('example.com')
+        (new AgentApi($this->client))
+            ->website('example.com')
             ->token('TEST-1234')
             ->carrier('TESTDK')
             ->closest();
@@ -307,8 +307,8 @@ class AgentsApiTest extends TestCase
             ->with('https://app.smartsend.io/api/v1/website/example.com/agents/closest/carrier/TESTDK/country/DK/postalcode/2100/', ['api_token' => 'TEST-1234'])
             ->andReturn(\Mockery::mock(ApiResponseInterface::class));
 
-        $api = new AgentApi($this->client);
-        $response = $api->website('example.com')
+        $response = (new AgentApi($this->client))
+            ->website('example.com')
             ->token('TEST-1234')
             ->carrier('TESTDK')
             ->country('DK')
@@ -325,8 +325,8 @@ class AgentsApiTest extends TestCase
             ->with('https://app.smartsend.io/api/v1/website/example.com/agents/closest/carrier/TESTDK/country/DK/postalcode/2100/street/some street/', ['api_token' => 'TEST-1234'])
             ->andReturn(\Mockery::mock(ApiResponseInterface::class));
 
-        $api = new AgentApi($this->client);
-        $response = $api->website('example.com')
+        $response = (new AgentApi($this->client))
+            ->website('example.com')
             ->token('TEST-1234')
             ->carrier('TESTDK')
             ->country('DK')
