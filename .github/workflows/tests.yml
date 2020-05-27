@@ -11,7 +11,14 @@ on:
 jobs:
   test:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        php: [7.0 7.1 7.2, 7.3, 7.4]
+        dependency-version: [prefer-lowest, prefer-stable]
+        os: [ubuntu-latest]
+
+    name: P${{ matrix.php }} - ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2
@@ -24,13 +31,20 @@ jobs:
       uses: actions/cache@v2
       with:
         path: vendor
-        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+        key: dependencies-php-${{ matrix.php }}-${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
-          ${{ runner.os }}-composer-
+          dependencies-php-${{ matrix.php }}-${{ runner.os }}-composer-
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php }}
+        extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, mysql, mysqli, pdo_mysql, bcmath, soap, intl, gd, exif, iconv, imagick
+        coverage: none
 
     - name: Install dependencies
-      if: steps.composer-cache.outputs.cache-hit != 'true'
-      run: composer install --prefer-dist --no-progress --no-suggest
+      run: |
+        composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
 
     - name: Run test suite
       run: composer run-script test
