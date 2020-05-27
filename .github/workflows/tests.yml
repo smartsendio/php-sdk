@@ -18,7 +18,7 @@ jobs:
         dependency-version: [prefer-lowest, prefer-stable]
         os: [ubuntu-latest]
 
-    name: P${{ matrix.php }} - ${{ matrix.os }}
+    name: P${{ matrix.php }} - ${{ matrix.os }} - ${{ matrix.dependency-version }}
 
     steps:
     - uses: actions/checkout@v2

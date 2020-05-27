@@ -18,7 +18,7 @@ abstract class AbstractApi implements ApiAuthenticationInterface
         return $this->uri;
     }
 
-    abstract function getVersion(): string;
+    abstract public function getVersion(): string;
 
     public function getBaseUri(string $endpoint = ''): string
     {
