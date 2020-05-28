@@ -1,10 +1,10 @@
 <?php
 
-namespace Smartsendio\Api\Data;
+namespace SmartSendIo\Api\Data;
 
-use Smartsendio\Api\Contracts\ArrayableInterface;
-use Smartsendio\Api\Traits\ArrayableTrait;
-use Smartsendio\Api\Traits\ArrayConstructableTrait;
+use SmartSendIo\Api\Contracts\ArrayableInterface;
+use SmartSendIo\Api\Traits\ArrayableTrait;
+use SmartSendIo\Api\Traits\ArrayConstructableTrait;
 
 class Receiver implements ArrayableInterface
 {

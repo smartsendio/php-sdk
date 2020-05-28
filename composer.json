@@ -10,7 +10,7 @@
         "api",
         "sdk"
     ],
-    "homepage": "https://github.com/Smartsendio/api",
+    "homepage": "https://github.com/smartsendio/api",
     "license": "MIT",
     "authors": [
         {
@@ -32,12 +32,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Smartsendio\\Api\\": "src/"
+            "SmartSendIo\\Api\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Smartsendio\\Api\\Tests\\": "tests/"
+            "SmartSendIo\\Api\\Tests\\": "tests"
         }
     },
     "scripts": {

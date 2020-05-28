@@ -1,11 +1,11 @@
 <?php
 
-namespace Smartsendio\Api\Adapters;
+namespace SmartSendIo\Api\Adapters;
 
 use GuzzleHttp\Client;
-use Smartsendio\Api\ApiResponse;
-use Smartsendio\Api\Contracts\ClientInterface;
-use Smartsendio\Api\Contracts\ApiResponseInterface;
+use SmartSendIo\Api\ApiResponse;
+use SmartSendIo\Api\Contracts\ClientInterface;
+use SmartSendIo\Api\Contracts\ApiResponseInterface;
 
 class GuzzleClientAdapter implements ClientInterface
 {

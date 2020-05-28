@@ -1,12 +1,12 @@
 <?php
 
-namespace Smartsendio\Api;
+namespace SmartSendIo\Api;
 
-use Smartsendio\Api\Contracts\AgentApiInterface;
-use Smartsendio\Api\Contracts\ApiFactoryInterface;
-use Smartsendio\Api\Contracts\ClientInterface;
-use Smartsendio\Api\Contracts\ShipmentsApiInterface;
-use Smartsendio\Api\Traits\ApiAuthenticationTrait;
+use SmartSendIo\Api\Contracts\AgentApiInterface;
+use SmartSendIo\Api\Contracts\ApiFactoryInterface;
+use SmartSendIo\Api\Contracts\ClientInterface;
+use SmartSendIo\Api\Contracts\ShipmentsApiInterface;
+use SmartSendIo\Api\Traits\ApiAuthenticationTrait;
 
 class ApiFactory implements ApiFactoryInterface
 {

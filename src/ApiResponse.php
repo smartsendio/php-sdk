@@ -1,12 +1,12 @@
 <?php
 
-namespace Smartsendio\Api;
+namespace SmartSendIo\Api;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ResponseInterface as Psr7ResponseInterface;
 use RuntimeException;
-use Smartsendio\Api\Contracts\ApiErrorInterface;
-use Smartsendio\Api\Contracts\ApiResponseInterface;
+use SmartSendIo\Api\Contracts\ApiErrorInterface;
+use SmartSendIo\Api\Contracts\ApiResponseInterface;
 
 class ApiResponse implements ApiResponseInterface
 {

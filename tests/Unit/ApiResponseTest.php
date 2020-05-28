@@ -2,12 +2,12 @@
 
 namespace Unit;
 
-namespace Smartsendio\Api\Tests\Unit;
+namespace SmartSendIo\Api\Tests\Unit;
 
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
-use Smartsendio\Api\ApiResponse;
-use Smartsendio\Api\Contracts\ApiErrorInterface;
+use SmartSendIo\Api\ApiResponse;
+use SmartSendIo\Api\Contracts\ApiErrorInterface;
 
 class ApiResponseTest extends TestCase
 {

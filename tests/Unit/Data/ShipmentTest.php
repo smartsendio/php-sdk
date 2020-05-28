@@ -1,14 +1,14 @@
 <?php
 
-namespace Smartsendio\Api\Tests\Unit\Data;
+namespace SmartSendIo\Api\Tests\Unit\Data;
 
 use PHPUnit\Framework\TestCase;
-use Smartsendio\Api\Data\Agent;
-use Smartsendio\Api\Data\Parcel;
-use Smartsendio\Api\Data\Receiver;
-use Smartsendio\Api\Data\Sender;
-use Smartsendio\Api\Data\Services;
-use Smartsendio\Api\Data\Shipment;
+use SmartSendIo\Api\Data\Agent;
+use SmartSendIo\Api\Data\Parcel;
+use SmartSendIo\Api\Data\Receiver;
+use SmartSendIo\Api\Data\Sender;
+use SmartSendIo\Api\Data\Services;
+use SmartSendIo\Api\Data\Shipment;
 
 class ShipmentTest extends TestCase
 {

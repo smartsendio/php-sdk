@@ -1,12 +1,12 @@
 <?php
 
-namespace Smartsendio\Api;
+namespace SmartSendIo\Api;
 
 use InvalidArgumentException;
-use Smartsendio\Api\Contracts\AgentApiInterface;
-use Smartsendio\Api\Contracts\ClientInterface;
-use Smartsendio\Api\Contracts\ApiResponseInterface;
-use Smartsendio\Api\Traits\PaginatableTrait;
+use SmartSendIo\Api\Contracts\AgentApiInterface;
+use SmartSendIo\Api\Contracts\ClientInterface;
+use SmartSendIo\Api\Contracts\ApiResponseInterface;
+use SmartSendIo\Api\Traits\PaginatableTrait;
 
 class AgentApi extends AbstractApi implements AgentApiInterface
 {

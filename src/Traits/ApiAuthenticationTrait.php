@@ -1,8 +1,8 @@
 <?php
 
-namespace Smartsendio\Api\Traits;
+namespace SmartSendIo\Api\Traits;
 
-use Smartsendio\Api\Contracts\ApiAuthenticationInterface;
+use SmartSendIo\Api\Contracts\ApiAuthenticationInterface;
 
 trait ApiAuthenticationTrait
 {

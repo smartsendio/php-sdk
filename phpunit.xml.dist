@@ -10,7 +10,7 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Smartsendio Test Suite">
+        <testsuite name="smartsendio Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

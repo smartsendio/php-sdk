@@ -1,12 +1,12 @@
 <?php
 
-namespace Smartsendio\Api\Tests\Unit;
+namespace SmartSendIo\Api\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Smartsendio\Api\ApiFactory;
-use Smartsendio\Api\Contracts\AgentApiInterface;
-use Smartsendio\Api\Contracts\ClientInterface;
-use Smartsendio\Api\Contracts\ShipmentsApiInterface;
+use SmartSendIo\Api\ApiFactory;
+use SmartSendIo\Api\Contracts\AgentApiInterface;
+use SmartSendIo\Api\Contracts\ClientInterface;
+use SmartSendIo\Api\Contracts\ShipmentsApiInterface;
 
 class ApiFactoryTest extends TestCase
 {

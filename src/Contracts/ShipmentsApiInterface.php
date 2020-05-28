@@ -1,8 +1,8 @@
 <?php
 
-namespace Smartsendio\Api\Contracts;
+namespace SmartSendIo\Api\Contracts;
 
-use Smartsendio\Api\Data\Shipment;
+use SmartSendIo\Api\Data\Shipment;
 
 interface ShipmentsApiInterface extends ApiAuthenticationInterface
 {

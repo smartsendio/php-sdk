@@ -1,12 +1,12 @@
 <?php
 
-namespace Smartsendio\Api\Tests\Unit;
+namespace SmartSendIo\Api\Tests\Unit;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use Smartsendio\Api\AgentApi;
-use Smartsendio\Api\Contracts\ClientInterface;
-use Smartsendio\Api\Contracts\ApiResponseInterface;
+use SmartSendIo\Api\AgentApi;
+use SmartSendIo\Api\Contracts\ClientInterface;
+use SmartSendIo\Api\Contracts\ApiResponseInterface;
 
 class AgentsApiTest extends TestCase
 {

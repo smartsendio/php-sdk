@@ -1,9 +1,9 @@
 <?php
 
-namespace Smartsendio\Api;
+namespace SmartSendIo\Api;
 
-use Smartsendio\Api\Contracts\ApiAuthenticationInterface;
-use Smartsendio\Api\Traits\ApiAuthenticationTrait;
+use SmartSendIo\Api\Contracts\ApiAuthenticationInterface;
+use SmartSendIo\Api\Traits\ApiAuthenticationTrait;
 
 abstract class AbstractApi implements ApiAuthenticationInterface
 {

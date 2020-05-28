@@ -1,9 +1,9 @@
 <?php
 
-namespace Smartsendio\Api\Tests\Unit\Data;
+namespace SmartSendIo\Api\Tests\Unit\Data;
 
 use PHPUnit\Framework\TestCase;
-use Smartsendio\Api\Data\Sender;
+use SmartSendIo\Api\Data\Sender;
 
 class SenderTest extends TestCase
 {

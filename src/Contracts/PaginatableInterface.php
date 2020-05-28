@@ -1,6 +1,6 @@
 <?php
 
-namespace Smartsendio\Api\Contracts;
+namespace SmartSendIo\Api\Contracts;
 
 interface PaginatableInterface
 {

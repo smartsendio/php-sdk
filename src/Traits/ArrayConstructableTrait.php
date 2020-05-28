@@ -1,6 +1,6 @@
 <?php
 
-namespace Smartsendio\Api\Traits;
+namespace SmartSendIo\Api\Traits;
 
 trait ArrayConstructableTrait
 {
