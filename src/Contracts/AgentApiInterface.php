@@ -4,13 +4,13 @@ namespace SmartSendIo\Api\Contracts;
 
 interface AgentApiInterface extends ApiAuthenticationInterface, PaginatableInterface
 {
-    public function carrier(string $carrierCode): self;
+    public function carrier(string $carrierCode): AgentApiInterface;
 
-    public function country(string $countryCode): self;
+    public function country(string $countryCode): AgentApiInterface;
 
-    public function postalcode(string $postalcode): self;
+    public function postalcode(string $postalcode): AgentApiInterface;
 
-    public function street(string $street): self;
+    public function street(string $street): AgentApiInterface;
 
     public function lookup(string $agentNo): ApiResponseInterface;
 

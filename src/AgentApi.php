@@ -34,25 +34,25 @@ class AgentApi extends AbstractApi implements AgentApiInterface
         return $this->api_version;
     }
 
-    public function carrier(string $carrierCode): self
+    public function carrier(string $carrierCode): AgentApiInterface
     {
         $this->carrier = $carrierCode;
         return $this;
     }
 
-    public function country(string $countryCode): self
+    public function country(string $countryCode): AgentApiInterface
     {
         $this->country = $countryCode;
         return $this;
     }
 
-    public function postalcode(string $postalcode): self
+    public function postalcode(string $postalcode): AgentApiInterface
     {
         $this->postalcode = $postalcode;
         return $this;
     }
 
-    public function street(string $street): self
+    public function street(string $street): AgentApiInterface
     {
         $this->street = $street;
         return $this;
@@ -80,7 +80,7 @@ class AgentApi extends AbstractApi implements AgentApiInterface
             $this->getBaseUri($this->api_endpoint_base).$this->getPathString($pathParameters),
             [
                 'api_token' => $this->token,
-            ],
+            ]
         );
     }
 
