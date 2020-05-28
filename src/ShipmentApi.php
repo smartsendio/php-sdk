@@ -1,11 +1,11 @@
 <?php
 
-namespace SmartSendIo\Api;
+namespace Smartsendio\Api;
 
 use InvalidArgumentException;
-use SmartSendIo\Api\Contracts\ClientInterface;
-use SmartSendIo\Api\Contracts\ApiResponseInterface;
-use SmartSendIo\Api\Data\Shipment;
+use Smartsendio\Api\Contracts\ClientInterface;
+use Smartsendio\Api\Contracts\ApiResponseInterface;
+use Smartsendio\Api\Data\Shipment;
 
 class ShipmentApi extends AbstractApi implements Contracts\ShipmentsApiInterface
 {

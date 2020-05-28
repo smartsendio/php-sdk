@@ -1,12 +1,12 @@
 <?php
 
-namespace SmartSendIo\Api\Tests\Unit\Adapters;
+namespace Smartsendio\Api\Tests\Unit\Adapters;
 
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
-use SmartSendIo\Api\Adapters\GuzzleClientAdapter;
-use SmartSendIo\Api\ApiResponse;
+use Smartsendio\Api\Adapters\GuzzleClientAdapter;
+use Smartsendio\Api\ApiResponse;
 
 class GuzzleClientAdapterTest extends TestCase
 {

@@ -1,12 +1,12 @@
 {
-    "name": "smartsendio/api",
+    "name": "Smartsendio/api",
     "type": "library",
     "description": "API Package for the Smart Send API",
     "keywords": [
-        "smartsendio",
+        "Smartsendio",
         "api"
     ],
-    "homepage": "https://github.com/smartsendio/api",
+    "homepage": "https://github.com/Smartsendio/api",
     "license": "MIT",
     "authors": [
         {
@@ -28,12 +28,12 @@
     },
     "autoload": {
         "psr-4": {
-            "SmartSendIo\\Api\\": "src"
+            "Smartsendio\\Api\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SmartSendIo\\Api\\Tests\\": "tests"
+            "Smartsendio\\Api\\Tests\\": "tests/"
         }
     },
     "scripts": {

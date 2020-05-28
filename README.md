@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
-![Tests](https://github.com/smartsendio/php-sdk/workflows/Tests/badge.svg)
+![Tests](https://github.com/Smartsendio/php-sdk/workflows/Tests/badge.svg)
 [![Total Downloads][ico-downloads]][link-downloads]
 
 PHP SDK for interacting with the Smart Send API.
@@ -12,7 +12,7 @@ PHP SDK for interacting with the Smart Send API.
 Via Composer
 
 ``` bash
-$ composer require smartsendio/api
+$ composer require Smartsendio/api
 ```
 
 ## Usage
@@ -26,8 +26,8 @@ require __DIR__.'/../vendor/autoload.php';
 And finally create an instance of the SDK:
 
 ```php
-$client = new SmartSendIo\Api\Adapters\GuzzleClientAdapter(new \GuzzleHttp\Client()); // Any client implementing ClientInterface
-$api = new SmartSendIo\Api\ApiFactory($client);
+$client = new Smartsendio\Api\Adapters\GuzzleClientAdapter(new \GuzzleHttp\Client()); // Any client implementing ClientInterface
+$api = new Smartsendio\Api\ApiFactory($client);
 $api->apiToken('API_TOKEN_HERE')->website('WEBSITE'); // Set the authentication parameters
 ```
 
@@ -60,7 +60,7 @@ $response = $api->agents()
 
 ### Shipments
 ```php
-$item = new \SmartSendIo\Api\Data\Item([
+$item = new \Smartsendio\Api\Data\Item([
    'internal_id' => '000000123',
    'internal_reference' => 'PRODUCT-1231456',
    'sku' => '012345678',
@@ -78,7 +78,7 @@ $item = new \SmartSendIo\Api\Data\Item([
    'total_tax_amount' => 20.3,
 ]);
 
-$parcel = new \SmartSendIo\Api\Data\Parcel([
+$parcel = new \Smartsendio\Api\Data\Parcel([
     'internal_id' => '00100025556',
     'internal_reference' => 'ABC12345678',
     'weight' => 9.3,
@@ -92,7 +92,7 @@ $parcel = new \SmartSendIo\Api\Data\Parcel([
 ]);
 $parcel->addItem($item);
 
-$shipment = new \SmartSendIo\Api\Data\Shipment();
+$shipment = new \Smartsendio\Api\Data\Shipment();
 $shipment->setReceiver([
     'internal_id' => '00000158895',
     'internal_reference' => '123456',
@@ -135,17 +135,17 @@ $ composer test
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/smartsendio/api.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/Smartsendio/api.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/smartsendio/api/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/smartsendio/api.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/smartsendio/api.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/smartsendio/api.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/Smartsendio/api/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/Smartsendio/api.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/Smartsendio/api.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/Smartsendio/api.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/smartsendio/api
-[link-travis]: https://travis-ci.org/smartsendio/api
-[link-scrutinizer]: https://scrutinizer-ci.com/g/smartsendio/api/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/smartsendio/api
-[link-downloads]: https://packagist.org/packages/smartsendio/api
-[link-author]: https://github.com/smartsendio
+[link-packagist]: https://packagist.org/packages/Smartsendio/api
+[link-travis]: https://travis-ci.org/Smartsendio/api
+[link-scrutinizer]: https://scrutinizer-ci.com/g/Smartsendio/api/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/Smartsendio/api
+[link-downloads]: https://packagist.org/packages/Smartsendio/api
+[link-author]: https://github.com/Smartsendio
 [link-contributors]: ../../contributors

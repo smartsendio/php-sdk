@@ -1,8 +1,8 @@
 <?php
 
-namespace SmartSendIo\Api\Traits;
+namespace Smartsendio\Api\Traits;
 
-use SmartSendIo\Api\Contracts\PaginatableInterface;
+use Smartsendio\Api\Contracts\PaginatableInterface;
 
 trait PaginatableTrait
 {
