@@ -1,8 +1,8 @@
 <?php
 
-namespace SmartSendIo\Api;
+namespace Smartsendio\Api;
 
-use SmartSendIo\Api\Traits\ArrayConstructableTrait;
+use Smartsendio\Api\Traits\ArrayConstructableTrait;
 
 class ApiErrorLinks implements Contracts\ApiErrorLinksInterface
 {

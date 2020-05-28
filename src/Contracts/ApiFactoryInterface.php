@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartSendIo\Api\Contracts;
+namespace Smartsendio\Api\Contracts;
 
 interface ApiFactoryInterface extends ApiAuthenticationInterface
 {

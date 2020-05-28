@@ -26,8 +26,8 @@ require __DIR__.'/../vendor/autoload.php';
 And finally create an instance of the SDK:
 
 ```php
-$client = new SmartSendIo\Api\Adapters\GuzzleClientAdapter(new \GuzzleHttp\Client()); // Any client implementing ClientInterface
-$api = new SmartSendIo\Api\ApiFactory($client);
+$client = new Smartsendio\Api\Adapters\GuzzleClientAdapter(new \GuzzleHttp\Client()); // Any client implementing ClientInterface
+$api = new Smartsendio\Api\ApiFactory($client);
 $api->apiToken('API_TOKEN_HERE')->website('WEBSITE'); // Set the authentication parameters
 ```
 
@@ -60,7 +60,7 @@ $response = $api->agents()
 
 ### Shipments
 ```php
-$item = new \SmartSendIo\Api\Data\Item([
+$item = new \Smartsendio\Api\Data\Item([
    'internal_id' => '000000123',
    'internal_reference' => 'PRODUCT-1231456',
    'sku' => '012345678',
@@ -78,7 +78,7 @@ $item = new \SmartSendIo\Api\Data\Item([
    'total_tax_amount' => 20.3,
 ]);
 
-$parcel = new \SmartSendIo\Api\Data\Parcel([
+$parcel = new \Smartsendio\Api\Data\Parcel([
     'internal_id' => '00100025556',
     'internal_reference' => 'ABC12345678',
     'weight' => 9.3,
@@ -92,7 +92,7 @@ $parcel = new \SmartSendIo\Api\Data\Parcel([
 ]);
 $parcel->addItem($item);
 
-$shipment = new \SmartSendIo\Api\Data\Shipment();
+$shipment = new \Smartsendio\Api\Data\Shipment();
 $shipment->setReceiver([
     'internal_id' => '00000158895',
     'internal_reference' => '123456',

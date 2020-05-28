@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartSendIo\Api\Contracts;
+namespace Smartsendio\Api\Contracts;
 
 use \Psr\Http\Message\ResponseInterface as Psr7ResponseInterface;
 
