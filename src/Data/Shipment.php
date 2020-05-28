@@ -1,10 +1,10 @@
 <?php
 
-namespace SmartSendIo\Api\Data;
+namespace Smartsendio\Api\Data;
 
-use SmartSendIo\Api\Contracts\ArrayableInterface;
-use SmartSendIo\Api\Traits\ArrayableTrait;
-use SmartSendIo\Api\Traits\ArrayConstructableTrait;
+use Smartsendio\Api\Contracts\ArrayableInterface;
+use Smartsendio\Api\Traits\ArrayableTrait;
+use Smartsendio\Api\Traits\ArrayConstructableTrait;
 
 class Shipment implements ArrayableInterface
 {

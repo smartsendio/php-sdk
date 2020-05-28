@@ -1,9 +1,9 @@
 <?php
 
-namespace SmartSendIo\Api\Tests\Unit\Data;
+namespace Smartsendio\Api\Tests\Unit\Data;
 
 use PHPUnit\Framework\TestCase;
-use SmartSendIo\Api\Data\Agent;
+use Smartsendio\Api\Data\Agent;
 
 class AgentTest extends TestCase
 {

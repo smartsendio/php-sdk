@@ -1,10 +1,10 @@
 <?php
 
-namespace SmartSendIo\Api\Tests\Unit\Data;
+namespace Smartsendio\Api\Tests\Unit\Data;
 
 use PHPUnit\Framework\TestCase;
-use SmartSendIo\Api\Data\Item;
-use SmartSendIo\Api\Data\Parcel;
+use Smartsendio\Api\Data\Item;
+use Smartsendio\Api\Data\Parcel;
 
 class ParcelTest extends TestCase
 {

@@ -32,12 +32,12 @@
     },
     "autoload": {
         "psr-4": {
-            "SmartSendIo\\Api\\": "src"
+            "Smartsendio\\Api\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SmartSendIo\\Api\\Tests\\": "tests"
+            "Smartsendio\\Api\\Tests\\": "tests/"
         }
     },
     "scripts": {
