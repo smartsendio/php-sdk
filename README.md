@@ -35,11 +35,11 @@ $api->apiToken('API_TOKEN_HERE')->website('WEBSITE'); // Set the authentication 
 Demo mode can be used for testing and is activated like so:
 
 ```php
-$api->demo(); // Not the api is in demo mode.
+$api->demo(); // Api is now in demo mode.
 ```
 
 ### Fetching agents
-Agents are fetched using the `agent` API.
+Agents are fetched using the `agents` API.
 
 ```php
 // Example: All agents for a given carrier in a zipcode
@@ -59,6 +59,8 @@ $response = $api->agents()
 ```
 
 ### Shipments
+Booking of shipments (creating shipping labels) are done by firstly creating the complex `Shipment` object and passing that to the `shipments` API:
+
 ```php
 $item = new \Smartsendio\Api\Data\Item([
    'internal_id' => '000000123',
@@ -117,8 +119,9 @@ This is how to deal with API errors:
 
 ```php
 $response = $api->shipments()->book($shipment); // ApiResponseInterface
-$response->isSuccessful(); // false
-$response->getError(); // ApiErrorInterface
+$response->isSuccessful(); // true
+$error = $response->getError(); // ApiErrorInterface
+$
 ```
 
 ## Change log

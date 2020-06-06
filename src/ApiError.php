@@ -44,9 +44,6 @@ class ApiError implements Contracts\ApiErrorInterface
         return $this->message;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getErrors(): array
     {
         return $this->errors;
