@@ -56,6 +56,12 @@ $response = $api->agents()
     ->zipcode('2100')
     ->street('Nordre Frihavnsgade 1')
     ->closest(); // ApiResponseInterface
+
+// Example: Get a single agent using the carries own unique agent number
+$response = $api->agents()
+    ->carrier('postnord')
+    ->country('DK')
+    ->lookup('1234567'); // AgentApiResponseInterface
 ```
 
 ### Shipments

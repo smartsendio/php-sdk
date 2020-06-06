@@ -5,6 +5,7 @@ namespace Smartsendio\Api\Tests\Unit;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Smartsendio\Api\AgentApi;
+use Smartsendio\Api\Contracts\AgentApiResponseInterface;
 use Smartsendio\Api\Contracts\ClientInterface;
 use Smartsendio\Api\Contracts\ApiResponseInterface;
 
@@ -25,16 +26,19 @@ class AgentsApiTest extends TestCase
     /** @test */
     public function testFindAgentById()
     {
+        $apiResponse = \Mockery::mock(ApiResponseInterface::class);
+        $apiResponse->shouldReceive('getDecodedData')->andReturn([]);
+
         $this->client->shouldReceive('get')
             ->with('https://app.smartsend.io/api/v1/website/example.com/agents/123/', ['api_token' => 'TEST-1234'])
-            ->andReturn(\Mockery::mock(ApiResponseInterface::class));
+            ->andReturn($apiResponse);
 
         $response = (new AgentApi($this->client))
             ->website('example.com')
             ->token('TEST-1234')
             ->find('123');
 
-        $this->assertInstanceOf(ApiResponseInterface::class, $response);
+        $this->assertInstanceOf(AgentApiResponseInterface::class, $response);
     }
 
     /** @test */
@@ -98,9 +102,12 @@ class AgentsApiTest extends TestCase
     /** @test */
     public function testCanLookupAgentByAgentNumber()
     {
+        $apiResponse = \Mockery::mock(ApiResponseInterface::class);
+        $apiResponse->shouldReceive('getDecodedData')->andReturn([]);
+
         $this->client->shouldReceive('get')
             ->with('https://app.smartsend.io/api/v1/website/example.com/agents/carrier/TESTDK/country/DK/agentno/123/', ['api_token' => 'TEST-1234'])
-            ->andReturn(\Mockery::mock(ApiResponseInterface::class));
+            ->andReturn($apiResponse);
 
         $response = (new AgentApi($this->client))
             ->website('example.com')
@@ -109,7 +116,7 @@ class AgentsApiTest extends TestCase
             ->country('DK')
             ->lookup('123');
 
-        $this->assertInstanceOf(ApiResponseInterface::class, $response);
+        $this->assertInstanceOf(AgentApiResponseInterface::class, $response);
     }
 
     /** @test */

@@ -4,6 +4,7 @@ namespace Smartsendio\Api;
 
 use InvalidArgumentException;
 use Smartsendio\Api\Contracts\AgentApiInterface;
+use Smartsendio\Api\Contracts\AgentApiResponseInterface;
 use Smartsendio\Api\Contracts\ClientInterface;
 use Smartsendio\Api\Contracts\ApiResponseInterface;
 use Smartsendio\Api\Traits\PaginatableTrait;
@@ -58,7 +59,7 @@ class AgentApi extends AbstractApi implements AgentApiInterface
         return $this;
     }
 
-    public function lookup(string $agentNo): ApiResponseInterface
+    public function lookup(string $agentNo): AgentApiResponseInterface
     {
         $this->checkRequiredAuthenticationParameters();
 
@@ -76,24 +77,28 @@ class AgentApi extends AbstractApi implements AgentApiInterface
             'agentno' => $agentNo,
         ];
 
-        return $this->client->get(
+        $apiResponse = $this->client->get(
             $this->getBaseUri($this->api_endpoint_base).$this->getPathString($pathParameters),
             [
                 'api_token' => $this->token,
             ]
         );
+
+        return new AgentApiResponse($apiResponse);
     }
 
-    public function find(string $id): ApiResponseInterface
+    public function find(string $id): AgentApiResponseInterface
     {
         $this->checkRequiredAuthenticationParameters();
 
-        return $this->client->get(
+        $apiResponse = $this->client->get(
             $this->getBaseUri($this->api_endpoint_base).$id.'/',
             [
                 'api_token' => $this->token,
             ]
         );
+
+        return new AgentApiResponse($apiResponse);
     }
 
     public function get(): ApiResponseInterface
