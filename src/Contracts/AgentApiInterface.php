@@ -12,9 +12,9 @@ interface AgentApiInterface extends ApiAuthenticationInterface, PaginatableInter
 
     public function street(string $street): AgentApiInterface;
 
-    public function lookup(string $agentNo): ApiResponseInterface;
+    public function lookup(string $agentNo): AgentApiResponseInterface;
 
-    public function find(string $id): ApiResponseInterface;
+    public function find(string $id): AgentApiResponseInterface;
 
     public function get(): ApiResponseInterface;
 

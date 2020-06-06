@@ -47,7 +47,7 @@ class ApiResponse implements ApiResponseInterface
         return new ApiError($responseArray);
     }
 
-    public function getData(): array
+    public function getDecodedData(): array
     {
         $responseArray = $this->getDecodedResponse();
 

@@ -90,7 +90,7 @@ class ApiResponseTest extends TestCase
     }
 
     /** @test */
-    public function testGetThrowsExceptionForMissingData(): void
+    public function testGetDecodedDataThrowsExceptionForMissingData(): void
     {
         $psrResponse = new Response(200, [], json_encode(['not-data-field' => 'value']));
         $response = new ApiResponse($psrResponse);
@@ -98,11 +98,11 @@ class ApiResponseTest extends TestCase
         if (method_exists($this, 'expectException')) {
             $this->expectException(\RuntimeException::class);
 
-            $response->getData(); // This should throw an exception
+            $response->getDecodedData(); // This should throw an exception
         } else {
             // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
             try {
-                $response->getData(); // This should throw an exception
+                $response->getDecodedData(); // This should throw an exception
             } catch (\Exception $exception) {
                 $this->assertInstanceOf(\RuntimeException::class, $exception);
             }
@@ -110,12 +110,12 @@ class ApiResponseTest extends TestCase
     }
 
     /** @test */
-    public function testReturnsDataFromResponse(): void
+    public function testGetDecodedDataFromResponse(): void
     {
         $psrResponse = new Response(200, [], json_encode(['data' => ['field1' => 'valueA', 'field2' => 'valueB']]));
         $response = new ApiResponse($psrResponse);
 
-        $data = $response->getData();
+        $data = $response->getDecodedData();
 
         $this->assertEquals(['field1' => 'valueA', 'field2' => 'valueB'], $data);
     }

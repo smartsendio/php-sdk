@@ -14,5 +14,5 @@ interface ApiResponseInterface
 
     public function getError(): ApiErrorInterface;
 
-    public function getData(): array;
+    public function getDecodedData(): array;
 }
