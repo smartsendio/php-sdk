@@ -26,8 +26,8 @@ require __DIR__.'/../vendor/autoload.php';
 And finally create an instance of the SDK:
 
 ```php
-$client = new Smartsendio\Api\Adapters\GuzzleClientAdapter(new \GuzzleHttp\Client()); // Any client implementing ClientInterface
-$api = new Smartsendio\Api\ApiFactory($client);
+$client = new Smartsendio\Api\Adapters\GuzzleClientAdapter(new \GuzzleHttp\Client());
+$api = new Smartsendio\Api\ApiFactory($client); // Any client that implements ClientInterface can be used
 $api->apiToken('API_TOKEN_HERE')->website('WEBSITE'); // Set the authentication parameters
 ```
 
@@ -109,16 +109,16 @@ $shipment->setReceiver([
     'email' => 'email@example.com',
 ])->addParcel($parcel);
 
-$api->book($shipment); // ApiResponseInterface
+$response = $api->shipments()->book($shipment); // ApiResponseInterface
 ```
 
 ### Dealing with errors
 This is how to deal with API errors:
 
 ```php
-$api->shipments()->book($shipment); // ApiResponseInterface
-$api->isSuccessful(); // false
-$api->getError(); // ApiErrorInterface
+$response = $api->shipments()->book($shipment); // ApiResponseInterface
+$response->isSuccessful(); // false
+$response->getError(); // ApiErrorInterface
 ```
 
 ## Change log
