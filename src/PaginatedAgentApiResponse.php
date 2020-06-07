@@ -14,16 +14,22 @@ class PaginatedAgentApiResponse extends AbstractApiResponse implements Paginated
     public function __construct(ApiResponseInterface $api_response)
     {
         $this->api_response = $api_response;
-
-        $data = [];
-        foreach ($api_response->getDecodedData() as $agent) {
-            $data[] = new AgentResponse($agent);
-        }
-        $this->data = $data;
     }
 
+    /**
+     * Get all the agents that was returned in the response.
+     *
+     * @return array|[]AgentResponse
+     */
     public function getData(): array
     {
+        if (empty($this->data)) {
+            $this->data = [];
+            foreach ($this->api_response->getDecodedData() as $agent) {
+                $this->data[] = new AgentResponse($agent);
+            }
+        }
+
         return $this->data;
     }
 }
