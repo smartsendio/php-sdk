@@ -2,9 +2,9 @@
 
 namespace Smartsendio\Api;
 
+use OutOfBoundsException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ResponseInterface as Psr7ResponseInterface;
-use RuntimeException;
 use Smartsendio\Api\Contracts\ApiErrorInterface;
 use Smartsendio\Api\Contracts\ApiResponseInterface;
 
@@ -37,7 +37,71 @@ class ApiResponse implements ApiResponseInterface
             return false;
         }
 
+        if (empty($responseArray['data'])) {
+            return false;
+        }
+
         return true;
+    }
+
+    public function hasLinks(): bool
+    {
+        $responseArray = $this->getDecodedResponse();
+
+        if (!isset($responseArray['links'])) {
+            return false;
+        }
+
+        if (empty($responseArray['links'])) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function getLinks(): array
+    {
+        $responseArray = $this->getDecodedResponse();
+
+        if (! isset($responseArray['links'])) {
+            throw new OutOfBoundsException('Unexpected response, missing links');
+        }
+
+        if (empty($responseArray['links'])) {
+            throw new OutOfBoundsException('Unexpected response, no links');
+        }
+
+        return $responseArray['links'];
+    }
+
+    public function hasMeta(): bool
+    {
+        $responseArray = $this->getDecodedResponse();
+
+        if (!isset($responseArray['meta'])) {
+            return false;
+        }
+
+        if (empty($responseArray['meta'])) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function getMeta(): array
+    {
+        $responseArray = $this->getDecodedResponse();
+
+        if (! isset($responseArray['meta'])) {
+            throw new OutOfBoundsException('Unexpected response, missing meta');
+        }
+
+        if (empty($responseArray['meta'])) {
+            throw new OutOfBoundsException('Unexpected response, no meta');
+        }
+
+        return $responseArray['meta'];
     }
 
     public function getError(): ApiErrorInterface
@@ -52,7 +116,7 @@ class ApiResponse implements ApiResponseInterface
         $responseArray = $this->getDecodedResponse();
 
         if (! isset($responseArray['data'])) {
-            throw new RuntimeException('Unexpected response, missing data');
+            throw new OutOfBoundsException('Unexpected response, missing data');
         }
 
         return $responseArray['data'];

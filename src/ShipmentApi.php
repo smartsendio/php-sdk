@@ -5,10 +5,14 @@ namespace Smartsendio\Api;
 use InvalidArgumentException;
 use Smartsendio\Api\Contracts\ClientInterface;
 use Smartsendio\Api\Contracts\ApiResponseInterface;
+use Smartsendio\Api\Contracts\ShipmentsApiInterface;
 use Smartsendio\Api\Data\Shipment;
+use Smartsendio\Api\Traits\PaginatableTrait;
 
-class ShipmentApi extends AbstractApi implements Contracts\ShipmentsApiInterface
+class ShipmentApi extends AbstractApi implements ShipmentsApiInterface
 {
+    use PaginatableTrait;
+
     /** @var ClientInterface */
     protected $client;
 

@@ -12,6 +12,14 @@ interface ApiResponseInterface
 
     public function hasData(): bool;
 
+    public function hasLinks(): bool;
+
+    public function getLinks(): array;
+
+    public function hasMeta(): bool;
+
+    public function getMeta(): array;
+
     public function getError(): ApiErrorInterface;
 
     public function getDecodedData(): array;

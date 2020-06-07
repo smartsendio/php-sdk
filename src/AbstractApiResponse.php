@@ -31,6 +31,26 @@ abstract class AbstractApiResponse implements ApiResponseInterface
         return $this->api_response->hasData();
     }
 
+    public function hasLinks(): bool
+    {
+        return $this->api_response->hasData();
+    }
+
+    public function getLinks(): array
+    {
+        return $this->api_response->getLinks();
+    }
+
+    public function hasMeta(): bool
+    {
+        return $this->api_response->hasMeta();
+    }
+
+    public function getMeta(): array
+    {
+        return $this->api_response->getMeta();
+    }
+
     public function getError(): ApiErrorInterface
     {
         return $this->api_response->getError();
