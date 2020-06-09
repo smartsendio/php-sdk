@@ -2,10 +2,11 @@
 
 namespace Smartsendio\Api;
 
+use Smartsendio\Api\Contracts\ApiErrorInterface;
 use Smartsendio\Api\Contracts\ApiErrorLinksInterface;
 use Smartsendio\Api\Traits\ArrayConstructableTrait;
 
-class ApiError implements Contracts\ApiErrorInterface
+class ApiError implements ApiErrorInterface
 {
     use ArrayConstructableTrait;
 
@@ -59,9 +60,14 @@ class ApiError implements Contracts\ApiErrorInterface
         $this->code = $code;
     }
 
-    private function setId(string $message): void
+    private function setMessage(string $message): void
     {
         $this->message = $message;
+    }
+
+    private function setId(string $id): void
+    {
+        $this->id = $id;
     }
 
     private function setErrors(array $errors): void

@@ -9,7 +9,7 @@ use Smartsendio\Api\Contracts\ApiResponseInterface;
 use Smartsendio\Api\Data\Shipment;
 use Smartsendio\Api\BookingApi;
 
-class ShipmentsApiTest extends TestCase
+class BookingApiTest extends TestCase
 {
     /** @test */
     public function testCanBookShipment()
@@ -19,8 +19,15 @@ class ShipmentsApiTest extends TestCase
 
         $client = \Mockery::mock(ClientInterface::class);
         $client->shouldReceive("post")
-            ->with('https://app.smartsend.io/api/v1/website/example.com/labels/', ['api_token' => 'TEST-1234'], ['test'])
-            ->andReturn(\Mockery::mock( BookingApiResponseInterface::class));
+            ->with(
+                'https://app.smartsend.io/api/v1/website/example.com/labels/',
+                [
+                    'api_token' => 'TEST-1234',
+                ],
+                [
+                    'test',
+                ]
+            )->andReturn(\Mockery::mock(BookingApiResponseInterface::class));
 
         $api = new BookingApi($client);
         $api->website('example.com');

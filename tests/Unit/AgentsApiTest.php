@@ -30,8 +30,12 @@ class AgentsApiTest extends TestCase
         $apiResponse->shouldReceive('getDecodedData')->andReturn([]);
 
         $this->client->shouldReceive('get')
-            ->with('https://app.smartsend.io/api/v1/website/example.com/agents/123/', ['api_token' => 'TEST-1234'])
-            ->andReturn($apiResponse);
+            ->with(
+                'https://app.smartsend.io/api/v1/website/example.com/agents/123/',
+                [
+                    'api_token' => 'TEST-1234',
+                ]
+            )->andReturn($apiResponse);
 
         $response = (new AgentApi($this->client))
             ->website('example.com')
@@ -106,8 +110,12 @@ class AgentsApiTest extends TestCase
         $apiResponse->shouldReceive('getDecodedData')->andReturn([]);
 
         $this->client->shouldReceive('get')
-            ->with('https://app.smartsend.io/api/v1/website/example.com/agents/carrier/TESTDK/country/DK/agentno/123/', ['api_token' => 'TEST-1234'])
-            ->andReturn($apiResponse);
+            ->with(
+                'https://app.smartsend.io/api/v1/website/example.com/agents/carrier/TESTDK/country/DK/agentno/123/',
+                [
+                    'api_token' => 'TEST-1234',
+                ]
+            )->andReturn($apiResponse);
 
         $response = (new AgentApi($this->client))
             ->website('example.com')
@@ -351,8 +359,12 @@ class AgentsApiTest extends TestCase
     public function testCanListAgentsForCarrierInCountry()
     {
         $this->client->shouldReceive('get')
-            ->with('https://app.smartsend.io/api/v1/website/example.com/agents/carrier/TESTDK/country/DK/', ['api_token' => 'TEST-1234'])
-            ->andReturn(\Mockery::mock(ApiResponseInterface::class));
+            ->with(
+                'https://app.smartsend.io/api/v1/website/example.com/agents/carrier/TESTDK/country/DK/',
+                [
+                    'api_token' => 'TEST-1234',
+                ]
+            )->andReturn(\Mockery::mock(ApiResponseInterface::class));
 
         $response = (new AgentApi($this->client))
             ->website('example.com')
@@ -368,8 +380,12 @@ class AgentsApiTest extends TestCase
     public function testCanListAgentsForCarrierInCountryPostalcode()
     {
         $this->client->shouldReceive('get')
-            ->with('https://app.smartsend.io/api/v1/website/example.com/agents/carrier/TESTDK/country/DK/postalcode/2100/', ['api_token' => 'TEST-1234'])
-            ->andReturn(\Mockery::mock(ApiResponseInterface::class));
+            ->with(
+                'https://app.smartsend.io/api/v1/website/example.com/agents/carrier/TESTDK/country/DK/postalcode/2100/',
+                [
+                    'api_token' => 'TEST-1234',
+                ]
+            )->andReturn(\Mockery::mock(ApiResponseInterface::class));
 
         $response = (new AgentApi($this->client))
             ->website('example.com')
@@ -386,8 +402,11 @@ class AgentsApiTest extends TestCase
     public function testCanListAgentsForCarrierInCountryPostalcodeStreet()
     {
         $this->client->shouldReceive('get')
-            ->with('https://app.smartsend.io/api/v1/website/example.com/agents/carrier/TESTDK/country/DK/postalcode/2100/street/some street/', ['api_token' => 'TEST-1234'])
-            ->andReturn(\Mockery::mock(ApiResponseInterface::class));
+            ->with('https://app.smartsend.io/api/v1/website/example.com/agents/carrier/TESTDK/country/DK/postalcode/2100/street/some street/',
+                [
+                    'api_token' => 'TEST-1234',
+                ]
+            )->andReturn(\Mockery::mock(ApiResponseInterface::class));
 
         $response = (new AgentApi($this->client))
             ->website('example.com')
@@ -521,8 +540,12 @@ class AgentsApiTest extends TestCase
     public function testCanFindClosestAgentsForCarrierInCountryPostalcode()
     {
         $this->client->shouldReceive('get')
-            ->with('https://app.smartsend.io/api/v1/website/example.com/agents/closest/carrier/TESTDK/country/DK/postalcode/2100/', ['api_token' => 'TEST-1234'])
-            ->andReturn(\Mockery::mock(ApiResponseInterface::class));
+            ->with(
+                'https://app.smartsend.io/api/v1/website/example.com/agents/closest/carrier/TESTDK/country/DK/postalcode/2100/',
+                [
+                    'api_token' => 'TEST-1234',
+                ]
+            )->andReturn(\Mockery::mock(ApiResponseInterface::class));
 
         $response = (new AgentApi($this->client))
             ->website('example.com')
@@ -539,8 +562,12 @@ class AgentsApiTest extends TestCase
     public function testCanFindClosestAgentsForCarrierInCountryPostalcodeStreet()
     {
         $this->client->shouldReceive('get')
-            ->with('https://app.smartsend.io/api/v1/website/example.com/agents/closest/carrier/TESTDK/country/DK/postalcode/2100/street/some street/', ['api_token' => 'TEST-1234'])
-            ->andReturn(\Mockery::mock(ApiResponseInterface::class));
+            ->with(
+                'https://app.smartsend.io/api/v1/website/example.com/agents/closest/carrier/TESTDK/country/DK/postalcode/2100/street/some street/',
+                [
+                    'api_token' => 'TEST-1234',
+                ]
+            )->andReturn(\Mockery::mock(ApiResponseInterface::class));
 
         $response = (new AgentApi($this->client))
             ->website('example.com')
