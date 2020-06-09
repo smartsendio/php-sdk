@@ -3,13 +3,13 @@
 namespace Smartsendio\Api;
 
 use InvalidArgumentException;
+use Smartsendio\Api\Contracts\BookingApiInterface;
+use Smartsendio\Api\Contracts\BookingApiResponseInterface;
 use Smartsendio\Api\Contracts\ClientInterface;
-use Smartsendio\Api\Contracts\ApiResponseInterface;
-use Smartsendio\Api\Contracts\ShipmentsApiInterface;
 use Smartsendio\Api\Data\Shipment;
 use Smartsendio\Api\Traits\PaginatableTrait;
 
-class ShipmentApi extends AbstractApi implements ShipmentsApiInterface
+class BookingApi extends AbstractApi implements BookingApiInterface
 {
     use PaginatableTrait;
 
@@ -18,7 +18,7 @@ class ShipmentApi extends AbstractApi implements ShipmentsApiInterface
 
     protected $api_version = '1';
 
-    protected $api_endpoint_base = 'shipments';
+    protected $api_endpoint_base = 'labels';
 
     public function __construct(ClientInterface $client)
     {
@@ -30,7 +30,7 @@ class ShipmentApi extends AbstractApi implements ShipmentsApiInterface
         return $this->api_version;
     }
 
-    public function book(Shipment $shipment): ApiResponseInterface
+    public function shipment(Shipment $shipment): BookingApiResponseInterface
     {
         $this->checkBasicRequiredParameters();
 

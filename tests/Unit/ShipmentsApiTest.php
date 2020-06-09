@@ -3,10 +3,11 @@
 namespace Smartsendio\Api\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
+use Smartsendio\Api\Contracts\BookingApiResponseInterface;
 use Smartsendio\Api\Contracts\ClientInterface;
 use Smartsendio\Api\Contracts\ApiResponseInterface;
 use Smartsendio\Api\Data\Shipment;
-use Smartsendio\Api\ShipmentApi;
+use Smartsendio\Api\BookingApi;
 
 class ShipmentsApiTest extends TestCase
 {
@@ -18,12 +19,12 @@ class ShipmentsApiTest extends TestCase
 
         $client = \Mockery::mock(ClientInterface::class);
         $client->shouldReceive("post")
-            ->with('https://app.smartsend.io/api/v1/website/example.com/shipments/', ['api_token' => 'TEST-1234'], ['test'])
-            ->andReturn(\Mockery::mock(ApiResponseInterface::class));
+            ->with('https://app.smartsend.io/api/v1/website/example.com/labels/', ['api_token' => 'TEST-1234'], ['test'])
+            ->andReturn(\Mockery::mock( BookingApiResponseInterface::class));
 
-        $api = new ShipmentApi($client);
+        $api = new BookingApi($client);
         $api->website('example.com');
         $api->token('TEST-1234');
-        $this->assertInstanceOf(ApiResponseInterface::class, $api->book($shipment));
+        $this->assertInstanceOf(ApiResponseInterface::class, $api->shipment($shipment));
     }
 }

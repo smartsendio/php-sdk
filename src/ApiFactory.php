@@ -4,8 +4,8 @@ namespace Smartsendio\Api;
 
 use Smartsendio\Api\Contracts\AgentApiInterface;
 use Smartsendio\Api\Contracts\ApiFactoryInterface;
+use Smartsendio\Api\Contracts\BookingApiInterface;
 use Smartsendio\Api\Contracts\ClientInterface;
-use Smartsendio\Api\Contracts\ShipmentsApiInterface;
 use Smartsendio\Api\Traits\ApiAuthenticationTrait;
 
 class ApiFactory implements ApiFactoryInterface
@@ -35,9 +35,9 @@ class ApiFactory implements ApiFactoryInterface
         return $api;
     }
 
-    public function shipments(array $parameters = []): ShipmentsApiInterface
+    public function bookings(array $parameters = []): BookingApiInterface
     {
-        $api = new ShipmentApi($this->client);
+        $api = new BookingApi($this->client);
 
         if ($this->token) {
             $api->token($this->token);

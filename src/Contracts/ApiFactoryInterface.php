@@ -6,5 +6,5 @@ interface ApiFactoryInterface extends ApiAuthenticationInterface
 {
     public function agents(array $parameters = []): AgentApiInterface;
 
-    public function shipments(array $parameters = []): ShipmentsApiInterface;
+    public function bookings(array $parameters = []): BookingApiInterface;
 }
