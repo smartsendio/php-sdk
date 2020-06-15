@@ -34,13 +34,15 @@ class BookingApi extends AbstractApi implements BookingApiInterface
     {
         $this->checkBasicRequiredParameters();
 
-        return $this->client->post(
+        $apiResponse = $this->client->post(
             $this->getBaseUri($this->api_endpoint_base),
             [
                 'api_token' => $this->token,
             ],
             $shipment->toArray()
         );
+
+        return new BookingApiResponse($apiResponse);
     }
 
     /** @throws InvalidArgumentException */

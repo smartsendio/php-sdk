@@ -27,11 +27,11 @@ class BookingApiTest extends TestCase
                 [
                     'test',
                 ]
-            )->andReturn(\Mockery::mock(BookingApiResponseInterface::class));
+            )->andReturn(\Mockery::mock(ApiResponseInterface::class));
 
         $api = new BookingApi($client);
         $api->website('example.com');
         $api->token('TEST-1234');
-        $this->assertInstanceOf(ApiResponseInterface::class, $api->shipment($shipment));
+        $this->assertInstanceOf(BookingApiResponseInterface::class, $api->shipment($shipment));
     }
 }

@@ -128,9 +128,12 @@ This is how to deal with API errors:
 
 ```php
 $response = $api->booking()->shipment($shipment); // ApiResponseInterface
-$response->isSuccessful(); // true
+$response->isSuccessful(); // false
 $error = $response->getError(); // ApiErrorInterface
-$
+$error->getId(); // Unique id of the error
+$error->getCode(); // Error code describing the type of error
+$error->getMessage(); // Description of the error
+$error->getErrors(); // Return each individual error
 ```
 
 ## Change log

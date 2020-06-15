@@ -8,6 +8,7 @@ use Smartsendio\Api\AgentApi;
 use Smartsendio\Api\Contracts\AgentApiResponseInterface;
 use Smartsendio\Api\Contracts\ClientInterface;
 use Smartsendio\Api\Contracts\ApiResponseInterface;
+use Smartsendio\Api\PaginatedAgentApiResponse;
 
 class AgentsApiTest extends TestCase
 {
@@ -373,7 +374,7 @@ class AgentsApiTest extends TestCase
             ->country('DK')
             ->get();
 
-        $this->assertInstanceOf(ApiResponseInterface::class, $response);
+        $this->assertInstanceOf(PaginatedAgentApiResponse::class, $response);
     }
 
     /** @test */
@@ -395,7 +396,7 @@ class AgentsApiTest extends TestCase
             ->postalcode('2100')
             ->get();
 
-        $this->assertInstanceOf(ApiResponseInterface::class, $response);
+        $this->assertInstanceOf(PaginatedAgentApiResponse::class, $response);
     }
 
     /** @test */
@@ -417,7 +418,7 @@ class AgentsApiTest extends TestCase
             ->street('some street')
             ->get();
 
-        $this->assertInstanceOf(ApiResponseInterface::class, $response);
+        $this->assertInstanceOf(PaginatedAgentApiResponse::class, $response);
     }
 
     //======================================================================
@@ -555,7 +556,7 @@ class AgentsApiTest extends TestCase
             ->postalcode('2100')
             ->closest();
 
-        $this->assertInstanceOf(ApiResponseInterface::class, $response);
+        $this->assertInstanceOf(PaginatedAgentApiResponse::class, $response);
     }
 
     /** @test */
@@ -578,6 +579,6 @@ class AgentsApiTest extends TestCase
             ->street('some street')
             ->closest();
 
-        $this->assertInstanceOf(ApiResponseInterface::class, $response);
+        $this->assertInstanceOf(PaginatedAgentApiResponse::class, $response);
     }
 }

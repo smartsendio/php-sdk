@@ -120,12 +120,14 @@ class AgentApi extends AbstractApi implements AgentApiInterface
             'street' => $this->street,
         ]);
 
-        return $this->client->get(
+        $apiResponse = $this->client->get(
             $this->getBaseUri($this->api_endpoint_base).$this->getPathString($pathParameters),
             [
                 'api_token' => $this->token,
             ]
         );
+
+        return new PaginatedAgentApiResponse($apiResponse);
     }
 
     public function closest(): ApiResponseInterface
@@ -147,12 +149,14 @@ class AgentApi extends AbstractApi implements AgentApiInterface
             'street' => $this->street,
         ]);
 
-        return $this->client->get(
+        $apiResponse = $this->client->get(
             $this->getBaseUri($this->api_endpoint_base).'closest/'.$this->getPathString($pathParameters),
             [
                 'api_token' => $this->token,
             ]
         );
+
+        return new PaginatedAgentApiResponse($apiResponse);
     }
 
     /** @throws InvalidArgumentException */

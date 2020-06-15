@@ -11,6 +11,11 @@ abstract class AbstractApiResponse implements ApiResponseInterface
     /** @var ApiResponseInterface */
     protected $api_response;
 
+    public function __construct(ApiResponseInterface $api_response)
+    {
+        $this->api_response = $api_response;
+    }
+
     public function getDecodedData(): array
     {
         return $this->api_response->getDecodedData();
