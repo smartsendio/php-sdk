@@ -12,7 +12,7 @@ abstract class AbstractBookingResponseTest extends TestCase
 
     public function setUp(): void
     {
-        $this->bookingResponse = new BookingResponse([
+        $this->bookingResponse = BookingResponse::make([
             'type' => 'label',
             'shipment_id' => '17765987',
             'shipment_internal_id' => 'S123456',

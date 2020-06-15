@@ -3,12 +3,12 @@
 namespace Smartsendio\Api\Data\Responses;
 
 use Smartsendio\Api\Traits\ArrayableTrait;
-use Smartsendio\Api\Traits\ArrayConstructableTrait;
+use Smartsendio\Api\Traits\ArrayMakableTrait;
 
 class AgentResponse
 {
     use ArrayableTrait;
-    use ArrayConstructableTrait;
+    use ArrayMakableTrait;
 
     /**
      * This is the unique id of the agent in the Smart Send system.

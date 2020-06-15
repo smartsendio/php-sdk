@@ -3,12 +3,12 @@
 namespace Smartsendio\Api\Data\Responses\Booking;
 
 use Smartsendio\Api\Traits\ArrayableTrait;
-use Smartsendio\Api\Traits\ArrayConstructableTrait;
+use Smartsendio\Api\Traits\ArrayMakableTrait;
 
 class Parcel
 {
     use ArrayableTrait;
-    use ArrayConstructableTrait;
+    use ArrayMakableTrait;
 
     /** @string */
     public $parcel_id;

@@ -13,7 +13,7 @@ class BookingApiResponse extends AbstractApiResponse implements BookingApiRespon
     public function getData(): BookingResponse
     {
         if (empty($this->data)) {
-            $this->data = new BookingResponse($this->api_response->getDecodedData());
+            $this->data = BookingResponse::make($this->api_response->getDecodedData());
         }
 
         return $this->data;

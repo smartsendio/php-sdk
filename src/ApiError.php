@@ -4,11 +4,11 @@ namespace Smartsendio\Api;
 
 use Smartsendio\Api\Contracts\ApiErrorInterface;
 use Smartsendio\Api\Contracts\ApiErrorLinksInterface;
-use Smartsendio\Api\Traits\ArrayConstructableTrait;
+use Smartsendio\Api\Traits\ArrayMakableTrait;
 
 class ApiError implements ApiErrorInterface
 {
-    use ArrayConstructableTrait;
+    use ArrayMakableTrait;
 
     /** @ApiErrorLinksInterface */
     public $links;
@@ -52,7 +52,7 @@ class ApiError implements ApiErrorInterface
 
     private function setLinks(array $links): void
     {
-        $this->links = new ApiErrorLinks($links);
+        $this->links = ApiErrorLinks::make($links);
     }
 
     private function setCode(string $code): void
