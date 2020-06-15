@@ -7,6 +7,8 @@
 
 PHP SDK for interacting with the Smart Send API.
 
+Check our [Swagger documentation](https://app.swaggerhub.com/apis/smartsendio/webshop/) for more details.
+
 ## Install
 
 Via Composer
@@ -26,8 +28,8 @@ require __DIR__.'/../vendor/autoload.php';
 And finally create an instance of the SDK:
 
 ```php
-$client = new Smartsendio\Api\Adapters\GuzzleClientAdapter(new \GuzzleHttp\Client()); // Any client implementing ClientInterface
-$api = new Smartsendio\Api\ApiFactory($client);
+$client = new Smartsendio\Api\Adapters\GuzzleClientAdapter(new \GuzzleHttp\Client());
+$api = new Smartsendio\Api\ApiFactory($client); // Any client that implements ClientInterface can be used
 $api->apiToken('API_TOKEN_HERE')->website('WEBSITE'); // Set the authentication parameters
 ```
 
@@ -35,32 +37,40 @@ $api->apiToken('API_TOKEN_HERE')->website('WEBSITE'); // Set the authentication 
 Demo mode can be used for testing and is activated like so:
 
 ```php
-$api->demo(); // Not the api is in demo mode.
+$api->demo(); // Api is now in demo mode.
 ```
 
 ### Fetching agents
-Agents are fetched using the `agent` API.
+Agents are fetched using the `agents` API.
 
 ```php
 // Example: All agents for a given carrier in a zipcode
-$response = $api->agents()
+$response = $api->agents() // AgentApiInterface
     ->carrier('postnord')
     ->country('DK')
     ->zipcode('2100')
-    ->get(); // ApiResponseInterface
+    ->get(); // PaginatedAgentApiResponseInterface
 
 // Example: The closest agents for a given carrier based on a given address
-$response = $api->agents()
+$response = $api->agents() // AgentApiInterface
     ->carrier('postnord')
     ->country('DK')
     ->zipcode('2100')
     ->street('Nordre Frihavnsgade 1')
-    ->closest(); // ApiResponseInterface
+    ->closest(); // PaginatedAgentApiResponseInterface
+
+// Example: Get a single agent using the carries own unique agent number
+$response = $api->agents() // AgentApiInterface
+    ->carrier('postnord')
+    ->country('DK')
+    ->lookup('1234567'); // AgentApiResponseInterface
 ```
 
 ### Shipments
+Booking of shipments (creating shipping labels) are done by firstly creating the complex `Shipment` object and passing that to the `shipments` API:
+
 ```php
-$item = new \Smartsendio\Api\Data\Item([
+$item = \Smartsendio\Api\Data\Item::make([
    'internal_id' => '000000123',
    'internal_reference' => 'PRODUCT-1231456',
    'sku' => '012345678',
@@ -78,7 +88,7 @@ $item = new \Smartsendio\Api\Data\Item([
    'total_tax_amount' => 20.3,
 ]);
 
-$parcel = new \Smartsendio\Api\Data\Parcel([
+$parcel = \Smartsendio\Api\Data\Parcel::make([
     'internal_id' => '00100025556',
     'internal_reference' => 'ABC12345678',
     'weight' => 9.3,
@@ -109,16 +119,21 @@ $shipment->setReceiver([
     'email' => 'email@example.com',
 ])->addParcel($parcel);
 
-$api->book($shipment); // ApiResponseInterface
+$response = $api->booking()  // BookingApiInterface
+    ->shipment($shipment); // BookingApiResponseInterface
 ```
 
 ### Dealing with errors
 This is how to deal with API errors:
 
 ```php
-$api->shipments()->book($shipment); // ApiResponseInterface
-$api->isSuccessful(); // false
-$api->getError(); // ApiErrorInterface
+$response = $api->booking()->shipment($shipment); // ApiResponseInterface
+$response->isSuccessful(); // false
+$error = $response->getError(); // ApiErrorInterface
+$error->getId(); // Unique id of the error
+$error->getCode(); // Error code describing the type of error
+$error->getMessage(); // Description of the error
+$error->getErrors(); // Return each individual error
 ```
 
 ## Change log

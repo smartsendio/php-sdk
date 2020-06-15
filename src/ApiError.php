@@ -2,12 +2,13 @@
 
 namespace Smartsendio\Api;
 
+use Smartsendio\Api\Contracts\ApiErrorInterface;
 use Smartsendio\Api\Contracts\ApiErrorLinksInterface;
-use Smartsendio\Api\Traits\ArrayConstructableTrait;
+use Smartsendio\Api\Traits\ArrayMakableTrait;
 
-class ApiError implements Contracts\ApiErrorInterface
+class ApiError implements ApiErrorInterface
 {
-    use ArrayConstructableTrait;
+    use ArrayMakableTrait;
 
     /** @ApiErrorLinksInterface */
     public $links;
@@ -44,9 +45,6 @@ class ApiError implements Contracts\ApiErrorInterface
         return $this->message;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getErrors(): array
     {
         return $this->errors;
@@ -54,7 +52,7 @@ class ApiError implements Contracts\ApiErrorInterface
 
     private function setLinks(array $links): void
     {
-        $this->links = new ApiErrorLinks($links);
+        $this->links = ApiErrorLinks::make($links);
     }
 
     private function setCode(string $code): void
@@ -62,9 +60,14 @@ class ApiError implements Contracts\ApiErrorInterface
         $this->code = $code;
     }
 
-    private function setId(string $message): void
+    private function setMessage(string $message): void
     {
         $this->message = $message;
+    }
+
+    private function setId(string $id): void
+    {
+        $this->id = $id;
     }
 
     private function setErrors(array $errors): void
