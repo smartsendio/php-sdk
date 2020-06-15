@@ -7,6 +7,8 @@
 
 PHP SDK for interacting with the Smart Send API.
 
+Check our [Swagger documentation](https://app.swaggerhub.com/apis/smartsendio/webshop/) for more details.
+
 ## Install
 
 Via Composer
@@ -43,19 +45,25 @@ Agents are fetched using the `agents` API.
 
 ```php
 // Example: All agents for a given carrier in a zipcode
-$response = $api->agents()
+$response = $api->agents() // AgentApiInterface
     ->carrier('postnord')
     ->country('DK')
     ->zipcode('2100')
-    ->get(); // ApiResponseInterface
+    ->get(); // PaginatedAgentApiResponseInterface
 
 // Example: The closest agents for a given carrier based on a given address
-$response = $api->agents()
+$response = $api->agents() // AgentApiInterface
     ->carrier('postnord')
     ->country('DK')
     ->zipcode('2100')
     ->street('Nordre Frihavnsgade 1')
-    ->closest(); // ApiResponseInterface
+    ->closest(); // PaginatedAgentApiResponseInterface
+
+// Example: Get a single agent using the carries own unique agent number
+$response = $api->agents() // AgentApiInterface
+    ->carrier('postnord')
+    ->country('DK')
+    ->lookup('1234567'); // AgentApiResponseInterface
 ```
 
 ### Shipments
@@ -111,17 +119,21 @@ $shipment->setReceiver([
     'email' => 'email@example.com',
 ])->addParcel($parcel);
 
-$response = $api->shipments()->book($shipment); // ApiResponseInterface
+$response = $api->booking()  // BookingApiInterface
+    ->shipment($shipment); // BookingApiResponseInterface
 ```
 
 ### Dealing with errors
 This is how to deal with API errors:
 
 ```php
-$response = $api->shipments()->book($shipment); // ApiResponseInterface
-$response->isSuccessful(); // true
+$response = $api->booking()->shipment($shipment); // ApiResponseInterface
+$response->isSuccessful(); // false
 $error = $response->getError(); // ApiErrorInterface
-$
+$error->getId(); // Unique id of the error
+$error->getCode(); // Error code describing the type of error
+$error->getMessage(); // Description of the error
+$error->getErrors(); // Return each individual error
 ```
 
 ## Change log

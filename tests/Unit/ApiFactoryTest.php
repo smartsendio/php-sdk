@@ -5,8 +5,8 @@ namespace Smartsendio\Api\Tests\Unit;
 use PHPUnit\Framework\TestCase;
 use Smartsendio\Api\ApiFactory;
 use Smartsendio\Api\Contracts\AgentApiInterface;
+use Smartsendio\Api\Contracts\BookingApiInterface;
 use Smartsendio\Api\Contracts\ClientInterface;
-use Smartsendio\Api\Contracts\ShipmentsApiInterface;
 
 class ApiFactoryTest extends TestCase
 {
@@ -24,8 +24,8 @@ class ApiFactoryTest extends TestCase
     }
 
     /** @test */
-    public function testCanResolveShipmentsApi()
+    public function testCanResolveBookingApi()
     {
-        $this->assertInstanceOf(ShipmentsApiInterface::class, $this->factory->shipments());
+        $this->assertInstanceOf(BookingApiInterface::class, $this->factory->bookings());
     }
 }

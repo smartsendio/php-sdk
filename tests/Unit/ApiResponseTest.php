@@ -90,34 +90,276 @@ class ApiResponseTest extends TestCase
     }
 
     /** @test */
-    public function testGetThrowsExceptionForMissingData(): void
+    public function testHasDataReturnsFalseWhenEmptyDataReturned(): void
+    {
+        $psrResponse = new Response(200, [], json_encode(['data' => null]));
+        $response = new ApiResponse($psrResponse);
+
+        $this->assertFalse($response->hasData());
+    }
+
+    /** @test */
+    public function testGetDecodedDataThrowsExceptionWhenNoData(): void
     {
         $psrResponse = new Response(200, [], json_encode(['not-data-field' => 'value']));
         $response = new ApiResponse($psrResponse);
 
         if (method_exists($this, 'expectException')) {
-            $this->expectException(\RuntimeException::class);
+            $this->expectException(\OutOfBoundsException::class);
 
-            $response->getData(); // This should throw an exception
+            $response->getDecodedData(); // This should throw an exception
         } else {
             // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
             try {
-                $response->getData(); // This should throw an exception
+                $response->getDecodedData(); // This should throw an exception
             } catch (\Exception $exception) {
-                $this->assertInstanceOf(\RuntimeException::class, $exception);
+                $this->assertInstanceOf(\OutOfBoundsException::class, $exception);
             }
         }
     }
 
     /** @test */
-    public function testReturnsDataFromResponse(): void
+    public function testGetDecodedDataThrowsExceptionWhenEmptyData(): void
+    {
+        $psrResponse = new Response(200, [], json_encode(['data' => null]));
+        $response = new ApiResponse($psrResponse);
+
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(\OutOfBoundsException::class);
+
+            $response->getDecodedData(); // This should throw an exception
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $response->getDecodedData(); // This should throw an exception
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(\OutOfBoundsException::class, $exception);
+            }
+        }
+    }
+
+    /** @test */
+    public function testGetDecodedDataFromResponse(): void
     {
         $psrResponse = new Response(200, [], json_encode(['data' => ['field1' => 'valueA', 'field2' => 'valueB']]));
         $response = new ApiResponse($psrResponse);
 
-        $data = $response->getData();
+        $data = $response->getDecodedData();
 
         $this->assertEquals(['field1' => 'valueA', 'field2' => 'valueB'], $data);
+    }
+
+    //======================================================================
+    // Links
+    //======================================================================
+
+    /** @test */
+    public function testHasLinkReturnsTrueWhenLinksReturned(): void
+    {
+        $psrResponse = new Response(200, [], json_encode(['links' => ['link1' => 'value']]));
+        $response = new ApiResponse($psrResponse);
+
+        $this->assertTrue($response->hasLinks());
+    }
+
+    /** @test */
+    public function testHasLinksReturnsFalseWhenNoLinksReturned(): void
+    {
+        $psrResponse = new Response(200, [], json_encode(['not-links-field' => 'value']));
+        $response = new ApiResponse($psrResponse);
+
+        $this->assertFalse($response->hasLinks());
+    }
+
+    /** @test */
+    public function testHasLinksReturnsFalseWhenEmptyLinksReturned(): void
+    {
+        $psrResponse = new Response(200, [], json_encode(['links' => null]));
+        $response = new ApiResponse($psrResponse);
+
+        $this->assertFalse($response->hasLinks());
+    }
+
+    /** @test */
+    public function testHasLinksReturnsFalseWhenEmptyLinksArrayReturned(): void
+    {
+        $psrResponse = new Response(200, [], json_encode(['links' => []]));
+        $response = new ApiResponse($psrResponse);
+
+        $this->assertFalse($response->hasLinks());
+    }
+
+    /** @test */
+    public function testGetLinksThrowsExceptionWhenNoLinks(): void
+    {
+        $psrResponse = new Response(200, [], json_encode(['not-links-field' => 'value']));
+        $response = new ApiResponse($psrResponse);
+
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(\OutOfBoundsException::class);
+
+            $response->getLinks(); // This should throw an exception
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $response->getLinks(); // This should throw an exception
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(\OutOfBoundsException::class, $exception);
+            }
+        }
+    }
+
+    /** @test */
+    public function testGetLinksThrowsExceptionWhenEmptyLinks(): void
+    {
+        $psrResponse = new Response(200, [], json_encode(['links' => null]));
+        $response = new ApiResponse($psrResponse);
+
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(\OutOfBoundsException::class);
+
+            $response->getLinks(); // This should throw an exception
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $response->getLinks(); // This should throw an exception
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(\OutOfBoundsException::class, $exception);
+            }
+        }
+    }
+
+    /** @test */
+    public function testGetLinksThrowsExceptionWhenEmptyLinksArray(): void
+    {
+        $psrResponse = new Response(200, [], json_encode(['links' => []]));
+        $response = new ApiResponse($psrResponse);
+
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(\OutOfBoundsException::class);
+
+            $response->getLinks(); // This should throw an exception
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $response->getLinks(); // This should throw an exception
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(\OutOfBoundsException::class, $exception);
+            }
+        }
+    }
+
+    /** @test */
+    public function testGetLinksFromResponse(): void
+    {
+        $psrResponse = new Response(200, [], json_encode(['links' => ['link1' => 'valueA', 'link2' => 'valueB']]));
+        $response = new ApiResponse($psrResponse);
+
+        $data = $response->getLinks();
+
+        $this->assertEquals(['link1' => 'valueA', 'link2' => 'valueB'], $data);
+    }
+
+    //======================================================================
+    // Meta
+    //======================================================================
+
+    /** @test */
+    public function testHasMetaReturnsTrueWhenMetaReturned(): void
+    {
+        $psrResponse = new Response(200, [], json_encode(['meta' => ['field' => 'value']]));
+        $response = new ApiResponse($psrResponse);
+
+        $this->assertTrue($response->hasMeta());
+    }
+
+    /** @test */
+    public function testHasMetaReturnsFalseWhenNoMetaReturned(): void
+    {
+        $psrResponse = new Response(200, [], json_encode(['not-meta-field' => 'value']));
+        $response = new ApiResponse($psrResponse);
+
+        $this->assertFalse($response->hasMeta());
+    }
+
+    /** @test */
+    public function testHasMetaReturnsFalseWhenEmptyMetaArrayReturned(): void
+    {
+        $psrResponse = new Response(200, [], json_encode(['meta' => []]));
+        $response = new ApiResponse($psrResponse);
+
+        $this->assertFalse($response->hasMeta());
+    }
+
+    /** @test */
+    public function testGetMetaFromResponse(): void
+    {
+        $psrResponse = new Response(200, [], json_encode(['meta' => ['field1' => 'valueA', 'field2' => 'valueB']]));
+        $response = new ApiResponse($psrResponse);
+
+        $meta = $response->getMeta();
+
+        $this->assertEquals(['field1' => 'valueA', 'field2' => 'valueB'], $meta);
+    }
+
+    /** @test */
+    public function testGetMetaThrowsExceptionWhenNoMeta(): void
+    {
+        $psrResponse = new Response(200, [], json_encode(['not-meta-field' => 'value']));
+        $response = new ApiResponse($psrResponse);
+
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(\OutOfBoundsException::class);
+
+            $response->getMeta(); // This should throw an exception
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $response->getMeta(); // This should throw an exception
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(\OutOfBoundsException::class, $exception);
+            }
+        }
+    }
+
+    /** @test */
+    public function testGetMetaThrowsExceptionWhenEmptyMeta(): void
+    {
+        $psrResponse = new Response(200, [], json_encode(['meta' => null]));
+        $response = new ApiResponse($psrResponse);
+
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(\OutOfBoundsException::class);
+
+            $response->getMeta(); // This should throw an exception
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $response->getMeta(); // This should throw an exception
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(\OutOfBoundsException::class, $exception);
+            }
+        }
+    }
+
+    /** @test */
+    public function testGetMetaThrowsExceptionWhenEmptyMetaArray(): void
+    {
+        $psrResponse = new Response(200, [], json_encode(['meta' => []]));
+        $response = new ApiResponse($psrResponse);
+
+        if (method_exists($this, 'expectException')) {
+            $this->expectException(\OutOfBoundsException::class);
+
+            $response->getMeta(); // This should throw an exception
+        } else {
+            // The methods above was introduced in PHPUnit 8.4 which require PHP 7.2
+            try {
+                $response->getMeta(); // This should throw an exception
+            } catch (\Exception $exception) {
+                $this->assertInstanceOf(\OutOfBoundsException::class, $exception);
+            }
+        }
     }
 
     //======================================================================
