@@ -2,10 +2,12 @@
 
 namespace Smartsendio\Api\Traits;
 
-trait ArrayConstructableTrait
+trait ArrayMakableTrait
 {
-    public function __construct(array $parameters = [])
+    public static function make(array $parameters = [])
     {
+        $instance = new static();
+
         foreach ($parameters as $key => $value) {
             if (is_null($value)) {
                 // We are not setting any null values.
@@ -14,9 +16,11 @@ trait ArrayConstructableTrait
             }
 
             $method = 'set'.str_replace('_', '', ucwords($key, '_')); // 'about' => 'setAbout'
-            if (method_exists(__CLASS__, $method)) {
-                $this->{$method}($value);
+            if (method_exists($instance, $method)) {
+                $instance->{$method}($value);
             }
         }
+
+        return $instance;
     }
 }

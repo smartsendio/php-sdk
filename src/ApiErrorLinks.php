@@ -2,11 +2,11 @@
 
 namespace Smartsendio\Api;
 
-use Smartsendio\Api\Traits\ArrayConstructableTrait;
+use Smartsendio\Api\Traits\ArrayMakableTrait;
 
 class ApiErrorLinks implements Contracts\ApiErrorLinksInterface
 {
-    use ArrayConstructableTrait;
+    use ArrayMakableTrait;
 
     /** @string */
     public $about;

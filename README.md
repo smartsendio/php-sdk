@@ -70,7 +70,7 @@ $response = $api->agents() // AgentApiInterface
 Booking of shipments (creating shipping labels) are done by firstly creating the complex `Shipment` object and passing that to the `shipments` API:
 
 ```php
-$item = new \Smartsendio\Api\Data\Item([
+$item = \Smartsendio\Api\Data\Item::make([
    'internal_id' => '000000123',
    'internal_reference' => 'PRODUCT-1231456',
    'sku' => '012345678',
@@ -88,7 +88,7 @@ $item = new \Smartsendio\Api\Data\Item([
    'total_tax_amount' => 20.3,
 ]);
 
-$parcel = new \Smartsendio\Api\Data\Parcel([
+$parcel = \Smartsendio\Api\Data\Parcel::make([
     'internal_id' => '00100025556',
     'internal_reference' => 'ABC12345678',
     'weight' => 9.3,

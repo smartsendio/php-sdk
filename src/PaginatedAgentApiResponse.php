@@ -21,7 +21,7 @@ class PaginatedAgentApiResponse extends AbstractApiResponse implements Paginated
         if (empty($this->data)) {
             $this->data = [];
             foreach ($this->api_response->getDecodedData() as $agent) {
-                $this->data[] = new AgentResponse($agent);
+                $this->data[] = AgentResponse::make($agent);
             }
         }
 

@@ -4,12 +4,12 @@ namespace Smartsendio\Api\Data;
 
 use Smartsendio\Api\Contracts\ArrayableInterface;
 use Smartsendio\Api\Traits\ArrayableTrait;
-use Smartsendio\Api\Traits\ArrayConstructableTrait;
+use Smartsendio\Api\Traits\ArrayMakableTrait;
 
 class Sender implements ArrayableInterface
 {
     use ArrayableTrait;
-    use ArrayConstructableTrait;
+    use ArrayMakableTrait;
 
     /** @string */
     public $internal_id;

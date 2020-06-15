@@ -12,7 +12,7 @@ class AgentResponseTest extends TestCase
 
     public function setUp(): void
     {
-        $this->agentResponse = new AgentResponse([
+        $this->agentResponse = AgentResponse::make([
             'id' => 1,
             'type' => 'agent',
             'agent_no' => 'pTOt5PaOYD',

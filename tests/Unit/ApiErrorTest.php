@@ -12,9 +12,9 @@ class ApiErrorTest extends TestCase
 
     public function setUp(): void
     {
-        $this->apiError = new ApiError([
+        $this->apiError = ApiError::make([
             'links' => [
-                'about' => 'http://dumbledore.test/errors/ValidationException',
+                'about' => 'https://smartsend.io/errors/ValidationException',
             ],
             'id' => 'UUID-123456-ABCDE-558ABC',
             'code' => 'ValidationException',
@@ -31,7 +31,7 @@ class ApiErrorTest extends TestCase
     {
         $this->assertInstanceOf(ApiErrorLinksInterface::class, $this->apiError->getLinks());
         $this->assertEquals(
-            'http://dumbledore.test/errors/ValidationException',
+            'https://smartsend.io/errors/ValidationException',
             $this->apiError->getLinks()->getAbout()
         );
     }
